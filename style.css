@@ -53,6 +53,10 @@ body {
   background-color: rgb(218, 214, 214);
 }
 
+.keyboard__key:hover {
+  background-color: rgb(218, 214, 214);
+}
+
 .active {
   box-shadow: none;
   background-color: rgb(218, 214, 214);

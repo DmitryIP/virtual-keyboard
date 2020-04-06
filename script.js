@@ -39,9 +39,13 @@ const keysRuShift = [
     "Ctrl", "Win", "Alt", " ", "Alt", "Ctrl", "Del", "&#9668;", "&#9660;", "&#9658;",
 ];
 
-
-let lang = keysEn;
 let capslock = false;
+let lang = keysEn;
+if (localStorage.getItem("lang") === "Ru") {
+    lang = keysRu;
+} else {
+    lang = keysEn;
+}
 
 
 function createTextarea() {
@@ -82,7 +86,9 @@ function btnHighlight() {
 
 // события клик на спецсимовлах
 function backspaceHandler() {
-    textarea.setRangeText("", textarea.selectionStart - 1, textarea.selectionEnd, "end");
+    if (textarea.value) {
+        textarea.setRangeText("", textarea.selectionStart - 1, textarea.selectionEnd, "end");
+    }
     textarea.focus();
 }
 
@@ -178,12 +184,13 @@ function arrowHandler(event) {
 function languageHandler() {
     if (lang === keysEn || lang === keysEnShift) {
         lang = keysRu;
-        capslock = false;
         addKeysValue(lang);
+        localStorage.setItem("lang", "Ru");
     } else
     if (lang === keysRu || lang === keysRuShift) {
         lang = keysEn;
         addKeysValue(lang);
+        localStorage.setItem("lang", "En");
     }
 }
 // события клик на печать символов
@@ -208,35 +215,14 @@ document.addEventListener("keydown", (event) => {
 });
 
 document.addEventListener("keyup", (event) => {
+    event.preventDefault();
     if (event.key.length === 1) {
-        event.preventDefault();
         document.querySelector(`#${event.code}`).click();
     }
-    if (event.code === "Backspace") {
-        event.preventDefault();
-        document.querySelector("#Backspace").click();
-    }
-    if (event.code === "CapsLock") {
-        document.querySelector("#CapsLock").click();
-    }
-    if (event.code === "Tab") {
-        event.preventDefault();
-        document.querySelector("#Tab").click();
-    }
-    if (event.code === "Enter") {
-        event.preventDefault();
-        document.querySelector("#Enter").click();
-    }
-    if (event.code === "Delete") {
-        event.preventDefault();
-        document.querySelector("#Delete").click();
-    }
-    if (event.code === "ArrowLeft" || event.code === "ArrowRight" || event.code === "ArrowUp" || event.code === "ArrowDown") {
-        event.preventDefault();
+    if (event.code === "Backspace" || event.code === "CapsLock" || event.code === "Tab" || event.code === "Delete" || event.code === "ArrowLeft" || event.code === "ArrowRight" || event.code === "ArrowUp" || event.code === "ArrowDown") {
         document.querySelector(`#${event.code}`).click();
     }
     if (event.code === "ShiftLeft" || event.code === "ShiftRight") {
-        event.preventDefault();
         document.querySelector("#ShiftLeft").click();
     }
 });
