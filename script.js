@@ -40,6 +40,7 @@ const keysRuShift = [
 ];
 
 let capslock = false;
+let shift = false;
 let lang = keysEn;
 if (localStorage.getItem("lang") === "Ru") {
     lang = keysRu;
@@ -60,23 +61,23 @@ function createTextarea() {
 function addKeysValue() {
     const keyArr = document.querySelectorAll(".keyboard__key");
     for (let i = 0; i < keyArr.length; i += 1) {
-        if (lang[i].length === 1 && capslock === true) {
+        if (lang[i].length === 1 && (capslock === true || shift === true)) {
             keyArr[i].innerHTML = lang[i].toUpperCase();
         } else {
             keyArr[i].innerHTML = lang[i];
         }
     }
 }
-// подсветка нажатий
+// подсветка кнопок при нажатии на клавиатуре
 function btnHighlight() {
     document.addEventListener("keydown", (event) => {
-        if (document.querySelector(`#${event.code}`)) {
+        if (document.querySelector(`#${event.code}`) && event.code !== "CapsLock") {
             document.querySelector(`#${event.code}`).classList.add("active");
         }
         textarea.focus();
     });
     document.addEventListener("keyup", (event) => {
-        if (document.querySelector(`#${event.code}`)) {
+        if (document.querySelector(`#${event.code}`) && event.code !== "CapsLock") {
             document.querySelector(`#${event.code}`).classList.remove("active");
         }
         textarea.focus();
@@ -117,25 +118,25 @@ function capslockHandler() {
 function shiftHandler(event) {
     switch (lang) {
         case keysEn:
-            capslock = true;
+            shift = true;
             lang = keysEnShift;
             addKeysValue(lang);
             event.target.classList.add("active");
             break;
         case keysEnShift:
-            capslock = false;
+            shift = false;
             lang = keysEn;
             addKeysValue(lang);
             event.target.classList.remove("active");
             break;
         case keysRu:
-            capslock = true;
+            shift = true;
             lang = keysRuShift;
             addKeysValue(lang);
             event.target.classList.add("active");
             break;
         case keysRuShift:
-            capslock = false;
+            shift = false;
             lang = keysRu;
             addKeysValue(lang);
             event.target.classList.remove("active");
@@ -208,7 +209,7 @@ document.onclick = (event) => {
 // события клавиатуры для всех
 document.addEventListener("keydown", (event) => {
     event.preventDefault();
-    if (event.code === "ShiftLeft" || event.code === "ShiftRight") {
+    if (event.code === "ShiftLeft") {
         event.preventDefault();
         document.querySelector("#ShiftLeft").click();
     }
@@ -219,11 +220,8 @@ document.addEventListener("keyup", (event) => {
     if (event.key.length === 1) {
         document.querySelector(`#${event.code}`).click();
     }
-    if (event.code === "Backspace" || event.code === "CapsLock" || event.code === "Tab" || event.code === "Delete" || event.code === "ArrowLeft" || event.code === "ArrowRight" || event.code === "ArrowUp" || event.code === "ArrowDown") {
+    if (event.code === "ShiftLeft" || event.code === "Backspace" || event.code === "CapsLock" || event.code === "Tab" || event.code === "Delete" || event.code === "ArrowLeft" || event.code === "ArrowRight" || event.code === "ArrowUp" || event.code === "ArrowDown") {
         document.querySelector(`#${event.code}`).click();
-    }
-    if (event.code === "ShiftLeft" || event.code === "ShiftRight") {
-        document.querySelector("#ShiftLeft").click();
     }
 });
 
@@ -259,7 +257,6 @@ function createKeyboard() {
                     key.classList.add("keyboard__key_wide");
                     break;
                 case "ShiftLeft":
-                case "ShiftRight":
                     key.addEventListener("click", shiftHandler, false);
                     key.classList.add("keyboard__key_wide");
                     break;
