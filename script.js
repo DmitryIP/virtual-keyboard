@@ -220,7 +220,7 @@ document.addEventListener("keyup", (event) => {
     if (event.key.length === 1) {
         document.querySelector(`#${event.code}`).click();
     }
-    if (event.code === "Enter" ||event.code === "ShiftLeft" || event.code === "Backspace" || event.code === "CapsLock" || event.code === "Tab" || event.code === "Delete" || event.code === "ArrowLeft" || event.code === "ArrowRight" || event.code === "ArrowUp" || event.code === "ArrowDown") {
+    if (event.code === "Enter" || event.code === "ShiftLeft" || event.code === "Backspace" || event.code === "CapsLock" || event.code === "Tab" || event.code === "Delete" || event.code === "ArrowLeft" || event.code === "ArrowRight" || event.code === "ArrowUp" || event.code === "ArrowDown") {
         document.querySelector(`#${event.code}`).click();
     }
 });
