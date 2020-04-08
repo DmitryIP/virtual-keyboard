@@ -1,42 +1,346 @@
 const container = document.createElement("div");
 const textarea = document.createElement("textarea");
 const keyID = [
-    ["Backquote", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0", "Minus", "Equal", "Backspace"],
-    ["Tab", "KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "BracketLeft", "BracketRight", "Backslash"],
-    ["CapsLock", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "Semicolon", "Quote", "Enter"],
-    ["ShiftLeft", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "Comma", "Period", "Slash", "ArrowUp", "Language"],
-    ["ControlLeft", "MetaLeft", "AltLeft", "Space", "AltRight", "ControlRight", "Delete", "ArrowLeft", "ArrowDown", "ArrowRight"],
-
+    [
+        "Backquote",
+        "Digit1",
+        "Digit2",
+        "Digit3",
+        "Digit4",
+        "Digit5",
+        "Digit6",
+        "Digit7",
+        "Digit8",
+        "Digit9",
+        "Digit0",
+        "Minus",
+        "Equal",
+        "Backspace",
+    ],
+    [
+        "Tab",
+        "KeyQ",
+        "KeyW",
+        "KeyE",
+        "KeyR",
+        "KeyT",
+        "KeyY",
+        "KeyU",
+        "KeyI",
+        "KeyO",
+        "KeyP",
+        "BracketLeft",
+        "BracketRight",
+        "Backslash",
+    ],
+    [
+        "CapsLock",
+        "KeyA",
+        "KeyS",
+        "KeyD",
+        "KeyF",
+        "KeyG",
+        "KeyH",
+        "KeyJ",
+        "KeyK",
+        "KeyL",
+        "Semicolon",
+        "Quote",
+        "Enter",
+    ],
+    [
+        "ShiftLeft",
+        "KeyZ",
+        "KeyX",
+        "KeyC",
+        "KeyV",
+        "KeyB",
+        "KeyN",
+        "KeyM",
+        "Comma",
+        "Period",
+        "Slash",
+        "ArrowUp",
+        "Language",
+    ],
+    [
+        "ControlLeft",
+        "MetaLeft",
+        "AltLeft",
+        "Space",
+        "AltRight",
+        "ControlRight",
+        "Delete",
+        "ArrowLeft",
+        "ArrowDown",
+        "ArrowRight",
+    ],
 ];
 
 const keysEn = [
-    "`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Backspace",
-    "Tab", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\",
-    "CapsLock", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "Enter",
-    "Shift", "z", "x", "c", "v", "b", "n", "m", ",", ".", "/", "&#9650;", "Рус",
-    "Ctrl", "Win", "Alt", " ", "Alt", "Ctrl", "Del", "&#9668;", "&#9660;", "&#9658;",
+    "`",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    "-",
+    "=",
+    "Backspace",
+    "Tab",
+    "q",
+    "w",
+    "e",
+    "r",
+    "t",
+    "y",
+    "u",
+    "i",
+    "o",
+    "p",
+    "[",
+    "]",
+    "\\",
+    "CapsLock",
+    "a",
+    "s",
+    "d",
+    "f",
+    "g",
+    "h",
+    "j",
+    "k",
+    "l",
+    ";",
+    "'",
+    "Enter",
+    "Shift",
+    "z",
+    "x",
+    "c",
+    "v",
+    "b",
+    "n",
+    "m",
+    ",",
+    ".",
+    "/",
+    "&#9650;",
+    "Рус",
+    "Ctrl",
+    "Win",
+    "Alt",
+    " ",
+    "Alt",
+    "Ctrl",
+    "Del",
+    "&#9668;",
+    "&#9660;",
+    "&#9658;",
 ];
 
 const keysEnShift = [
-    "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "Backspace",
-    "Tab", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "{", "}", "|",
-    "CapsLock", "a", "s", "d", "f", "g", "h", "j", "k", "l", ":", "\"", "Enter",
-    "Shift", "z", "x", "c", "v", "b", "n", "m", "<", ">", "?", "&#9650;", "Рус",
-    "Ctrl", "Win", "Alt", " ", "Alt", "Ctrl", "Del", "&#9668;", "&#9660;", "&#9658;",
+    "~",
+    "!",
+    "@",
+    "#",
+    "$",
+    "%",
+    "^",
+    "&",
+    "*",
+    "(",
+    ")",
+    "_",
+    "+",
+    "Backspace",
+    "Tab",
+    "q",
+    "w",
+    "e",
+    "r",
+    "t",
+    "y",
+    "u",
+    "i",
+    "o",
+    "p",
+    "{",
+    "}",
+    "|",
+    "CapsLock",
+    "a",
+    "s",
+    "d",
+    "f",
+    "g",
+    "h",
+    "j",
+    "k",
+    "l",
+    ":",
+    "\"",
+    "Enter",
+    "Shift",
+    "z",
+    "x",
+    "c",
+    "v",
+    "b",
+    "n",
+    "m",
+    "<",
+    ">",
+    "?",
+    "&#9650;",
+    "Рус",
+    "Ctrl",
+    "Win",
+    "Alt",
+    " ",
+    "Alt",
+    "Ctrl",
+    "Del",
+    "&#9668;",
+    "&#9660;",
+    "&#9658;",
 ];
 const keysRu = [
-    "ё", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Backspace",
-    "Tab", "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х", "ъ", "\\",
-    "CapsLock", "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э", "Enter",
-    "Shift", "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", ".", "&#9650;", "En",
-    "Ctrl", "Win", "Alt", " ", "Alt", "Ctrl", "Del", "&#9668;", "&#9660;", "&#9658;",
+    "ё",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    "-",
+    "=",
+    "Backspace",
+    "Tab",
+    "й",
+    "ц",
+    "у",
+    "к",
+    "е",
+    "н",
+    "г",
+    "ш",
+    "щ",
+    "з",
+    "х",
+    "ъ",
+    "\\",
+    "CapsLock",
+    "ф",
+    "ы",
+    "в",
+    "а",
+    "п",
+    "р",
+    "о",
+    "л",
+    "д",
+    "ж",
+    "э",
+    "Enter",
+    "Shift",
+    "я",
+    "ч",
+    "с",
+    "м",
+    "и",
+    "т",
+    "ь",
+    "б",
+    "ю",
+    ".",
+    "&#9650;",
+    "En",
+    "Ctrl",
+    "Win",
+    "Alt",
+    " ",
+    "Alt",
+    "Ctrl",
+    "Del",
+    "&#9668;",
+    "&#9660;",
+    "&#9658;",
 ];
 const keysRuShift = [
-    "Ё", "!", "\"", "№", ";", "%", ":", "?", "*", "(", ")", "_", "+", "Backspace",
-    "Tab", "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х", "ъ", "|",
-    "CapsLock", "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э", "Enter",
-    "Shift", "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", ",", "&#9650;", "En",
-    "Ctrl", "Win", "Alt", " ", "Alt", "Ctrl", "Del", "&#9668;", "&#9660;", "&#9658;",
+    "Ё",
+    "!",
+    "\"",
+    "№",
+    ";",
+    "%",
+    ":",
+    "?",
+    "*",
+    "(",
+    ")",
+    "_",
+    "+",
+    "Backspace",
+    "Tab",
+    "й",
+    "ц",
+    "у",
+    "к",
+    "е",
+    "н",
+    "г",
+    "ш",
+    "щ",
+    "з",
+    "х",
+    "ъ",
+    "|",
+    "CapsLock",
+    "ф",
+    "ы",
+    "в",
+    "а",
+    "п",
+    "р",
+    "о",
+    "л",
+    "д",
+    "ж",
+    "э",
+    "Enter",
+    "Shift",
+    "я",
+    "ч",
+    "с",
+    "м",
+    "и",
+    "т",
+    "ь",
+    "б",
+    "ю",
+    ",",
+    "&#9650;",
+    "En",
+    "Ctrl",
+    "Win",
+    "Alt",
+    " ",
+    "Alt",
+    "Ctrl",
+    "Del",
+    "&#9668;",
+    "&#9660;",
+    "&#9658;",
 ];
 
 let capslock = false;
@@ -47,7 +351,6 @@ if (localStorage.getItem("lang") === "Ru") {
 } else {
     lang = keysEn;
 }
-
 
 function createTextarea() {
     container.className = "container";
@@ -84,17 +387,26 @@ function btnHighlight() {
     });
 }
 
-
 // события клик на спецсимовлах
 function backspaceHandler() {
-    if (textarea.value) {
-        textarea.setRangeText("", textarea.selectionStart - 1, textarea.selectionEnd, "end");
+    if (textarea.selectionStart > 0) {
+        textarea.setRangeText(
+            "",
+            textarea.selectionStart - 1,
+            textarea.selectionEnd,
+            "end",
+        );
     }
     textarea.focus();
 }
 
 function tabHandler() {
-    textarea.setRangeText("    ", textarea.selectionStart, textarea.selectionEnd, "end");
+    textarea.setRangeText(
+        "    ",
+        textarea.selectionStart,
+        textarea.selectionEnd,
+        "end",
+    );
     textarea.focus();
 }
 
@@ -148,7 +460,12 @@ function shiftHandler(event) {
 
 function deleteHandler() {
     textarea.focus();
-    textarea.setRangeText("", textarea.selectionStart, textarea.selectionEnd + 1, "end");
+    textarea.setRangeText(
+        "",
+        textarea.selectionStart,
+        textarea.selectionEnd + 1,
+        "end",
+    );
 }
 
 function arrowHandler(event) {
@@ -168,13 +485,19 @@ function arrowHandler(event) {
         case "ArrowLeft":
             if (textarea.selectionStart > 0) {
                 textarea.focus();
-                textarea.setSelectionRange(textarea.selectionStart, textarea.selectionEnd -= 1);
+                textarea.setSelectionRange(
+                    textarea.selectionStart,
+                    (textarea.selectionEnd -= 1),
+                );
             }
             break;
         case "ArrowRight":
             if (textarea.selectionStart <= textarea.value.length) {
                 textarea.focus();
-                textarea.setSelectionRange(textarea.selectionStart += 1, textarea.selectionEnd);
+                textarea.setSelectionRange(
+                    (textarea.selectionStart += 1),
+                    textarea.selectionEnd,
+                );
             }
             break;
         default:
@@ -187,8 +510,7 @@ function languageHandler() {
         lang = keysRu;
         addKeysValue(lang);
         localStorage.setItem("lang", "Ru");
-    } else
-    if (lang === keysRu || lang === keysRuShift) {
+    } else if (lang === keysRu || lang === keysRuShift) {
         lang = keysEn;
         addKeysValue(lang);
         localStorage.setItem("lang", "En");
@@ -196,12 +518,28 @@ function languageHandler() {
 }
 // события клик на печать символов
 document.onclick = (event) => {
-    if (event.target.innerHTML.length === 1 && event.target.id !== "ArrowLeft" && event.target.id !== "ArrowRight" && event.target.id !== "ArrowUp" && event.target.id !== "ArrowDown") {
-        textarea.setRangeText(event.target.innerHTML, textarea.selectionStart, textarea.selectionEnd, "end");
+    if (
+        event.target.innerHTML.length === 1
+    && event.target.id !== "ArrowLeft"
+    && event.target.id !== "ArrowRight"
+    && event.target.id !== "ArrowUp"
+    && event.target.id !== "ArrowDown"
+    ) {
+        textarea.setRangeText(
+            event.target.innerHTML,
+            textarea.selectionStart,
+            textarea.selectionEnd,
+            "end",
+        );
         textarea.focus();
     }
     if (event.target.id === "Enter") {
-        textarea.setRangeText("\n", textarea.selectionStart, textarea.selectionEnd, "end");
+        textarea.setRangeText(
+            "\n",
+            textarea.selectionStart,
+            textarea.selectionEnd,
+            "end",
+        );
         textarea.focus();
     }
 };
@@ -220,7 +558,18 @@ document.addEventListener("keyup", (event) => {
     if (event.key.length === 1) {
         document.querySelector(`#${event.code}`).click();
     }
-    if (event.code === "Enter" || event.code === "ShiftLeft" || event.code === "Backspace" || event.code === "CapsLock" || event.code === "Tab" || event.code === "Delete" || event.code === "ArrowLeft" || event.code === "ArrowRight" || event.code === "ArrowUp" || event.code === "ArrowDown") {
+    if (
+        event.code === "Enter"
+    || event.code === "ShiftLeft"
+    || event.code === "Backspace"
+    || event.code === "CapsLock"
+    || event.code === "Tab"
+    || event.code === "Delete"
+    || event.code === "ArrowLeft"
+    || event.code === "ArrowRight"
+    || event.code === "ArrowUp"
+    || event.code === "ArrowDown"
+    ) {
         document.querySelector(`#${event.code}`).click();
     }
 });
