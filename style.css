@@ -48,6 +48,7 @@ body {
   box-shadow: 0 0 5px #666d89;
   background-color: #f0f0f0;
   outline: none;
+  overflow: hidden;
 }
 
 .keyboard__key:active {
@@ -79,4 +80,27 @@ body {
 #Language {
   border: solid 2px #f06c64;
   color: #f06c64;
+}
+@media(min-width: 601px ) and (max-width: 850px){
+  .keyboard__key {
+  font-size: 1.5rem;
+  margin: 2px;
+  padding: 2px;
+}
+}
+@media(max-width: 600px){
+  .keyrow {
+    padding: 2px;
+  }
+  .keyboard__key {
+    height: 25px;
+    font-size: 1.2rem;
+    min-width: 6%;
+    margin: 1px;
+    border: solid 1px #666d89;
+    border-radius: 3px;
+    box-shadow: 0 0 3px #666d89;
+    padding: 2px;
+  }
+  
 }
