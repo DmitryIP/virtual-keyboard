@@ -21,7 +21,6 @@ body {
   width: 100%;
   height: 20rem;
   margin-bottom: 10px;
-
 }
 
 .keyboard {
@@ -44,22 +43,22 @@ body {
   color: #666d89;
   font-size: 2rem;
   box-shadow: 0 0 5px #666d89;
-  background-color: rgb(240, 240, 240);
+  background-color: #f0f0f0;
   outline: none;
 }
 
 .keyboard__key:active {
   box-shadow: none;
-  background-color: rgb(218, 214, 214);
+  background-color: #a8a8a8;
 }
 
 .keyboard__key:hover {
-  background-color: rgb(218, 214, 214);
+  background-color: #dad6d6;
 }
 
 .active {
   box-shadow: none;
-  background-color: rgb(218, 214, 214);
+  background-color: #dad6d6;
 }
 
 .keyboard__key_semiwide {
