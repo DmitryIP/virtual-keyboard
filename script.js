@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 const CONTAINER = document.createElement("div");
 const TEXTAREA = document.createElement("textarea");
 const KEY_ID = [
@@ -184,7 +185,7 @@ const keysEnShift = [
   "k",
   "l",
   ":",
-  '"',
+  "\"",
   "Enter",
   "Shift",
   "z",
@@ -279,7 +280,7 @@ const keysRu = [
 const keysRuShift = [
   "Ё",
   "!",
-  '"',
+  "\"",
   "№",
   ";",
   "%",
@@ -385,14 +386,15 @@ function btnHighlight() {
 
 // события клик на спецсимовлах
 function backspaceHandler() {
-  if (TEXTAREA.selectionStart > 0) {
-    TEXTAREA.setRangeText(
-      "",
-      TEXTAREA.selectionStart - 1,
-      TEXTAREA.selectionEnd,
-      "end"
-    );
-  }
+  const CURSOR_START = TEXTAREA.selectionStart > 0
+    && TEXTAREA.selectionStart === TEXTAREA.selectionEnd
+    ? TEXTAREA.selectionStart - 1 : TEXTAREA.selectionStart;
+  TEXTAREA.setRangeText(
+    "",
+    CURSOR_START,
+    TEXTAREA.selectionEnd,
+    "end",
+  );
   TEXTAREA.focus();
 }
 
@@ -401,7 +403,7 @@ function tabHandler() {
     "    ",
     TEXTAREA.selectionStart,
     TEXTAREA.selectionEnd,
-    "end"
+    "end",
   );
   TEXTAREA.focus();
 }
@@ -460,7 +462,7 @@ function deleteHandler() {
     "",
     TEXTAREA.selectionStart,
     TEXTAREA.selectionEnd + 1,
-    "end"
+    "end",
   );
 }
 
@@ -483,7 +485,7 @@ function arrowHandler(event) {
         TEXTAREA.focus();
         TEXTAREA.setSelectionRange(
           TEXTAREA.selectionStart,
-          (TEXTAREA.selectionEnd -= 1)
+          (TEXTAREA.selectionEnd -= 1),
         );
       }
       break;
@@ -492,7 +494,7 @@ function arrowHandler(event) {
         TEXTAREA.focus();
         TEXTAREA.setSelectionRange(
           (TEXTAREA.selectionStart += 1),
-          TEXTAREA.selectionEnd
+          TEXTAREA.selectionEnd,
         );
       }
       break;
@@ -515,17 +517,17 @@ function languageHandler() {
 // события клик на печать символов
 document.onclick = (event) => {
   if (
-    event.target.innerHTML.length === 1 &&
-    event.target.id !== "ArrowLeft" &&
-    event.target.id !== "ArrowRight" &&
-    event.target.id !== "ArrowUp" &&
-    event.target.id !== "ArrowDown"
+    event.target.innerHTML.length === 1
+    && event.target.id !== "ArrowLeft"
+    && event.target.id !== "ArrowRight"
+    && event.target.id !== "ArrowUp"
+    && event.target.id !== "ArrowDown"
   ) {
     TEXTAREA.setRangeText(
       event.target.innerHTML,
       TEXTAREA.selectionStart,
       TEXTAREA.selectionEnd,
-      "end"
+      "end",
     );
     TEXTAREA.focus();
   }
@@ -534,7 +536,7 @@ document.onclick = (event) => {
       "\n",
       TEXTAREA.selectionStart,
       TEXTAREA.selectionEnd,
-      "end"
+      "end",
     );
     TEXTAREA.focus();
   }
@@ -555,16 +557,16 @@ document.addEventListener("keyup", (event) => {
     document.querySelector(`#${event.code}`).click();
   }
   if (
-    event.code === "Enter" ||
-    event.code === "ShiftLeft" ||
-    event.code === "Backspace" ||
-    event.code === "CapsLock" ||
-    event.code === "Tab" ||
-    event.code === "Delete" ||
-    event.code === "ArrowLeft" ||
-    event.code === "ArrowRight" ||
-    event.code === "ArrowUp" ||
-    event.code === "ArrowDown"
+    event.code === "Enter"
+    || event.code === "ShiftLeft"
+    || event.code === "Backspace"
+    || event.code === "CapsLock"
+    || event.code === "Tab"
+    || event.code === "Delete"
+    || event.code === "ArrowLeft"
+    || event.code === "ArrowRight"
+    || event.code === "ArrowUp"
+    || event.code === "ArrowDown"
   ) {
     document.querySelector(`#${event.code}`).click();
   }

@@ -22,6 +22,9 @@ body {
   height: 20rem;
   margin-bottom: 10px;
 }
+.textarea:focus{
+  outline: none;
+}
 
 .keyboard {
   border: solid 2px #666d89;
