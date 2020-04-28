@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+.container {
+  max-width: 1020px;
+  padding: 10px;
+  margin: auto;
+}
+
+.textarea {
+  width: 100%;
+  height: 20rem;
+  margin-bottom: 10px;
+}
+.textarea:focus{
+  outline: none;
+}
+
+.keyboard {
+  border: solid 2px #666d89;
+  border-radius: 5px;
+}
+
+.keyrow {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.keyboard__key {
+  height: 50px;
+  min-width: 6%;
+  margin: 3px;
+  border: solid 2px #666d89;
+  border-radius: 5px;
+  color: #666d89;
+  font-size: 2rem;
+  box-shadow: 0 0 5px #666d89;
+  background-color: #f0f0f0;
+  outline: none;
+  overflow: hidden;
+}
+
+.keyboard__key:active {
+  box-shadow: none;
+  background-color: #a8a8a8;
+}
+
+.keyboard__key:hover {
+  background-color: #dad6d6;
+}
+
+.active {
+  box-shadow: none;
+  background-color: #dad6d6;
+}
+
+.keyboard__key_semiwide {
+  width: 9%;
+}
+
+.keyboard__key_wide {
+  width: 12%;
+}
+
+.keyboard__key_extrawide {
+  width: 34%;
+}
+
+#Language {
+  border: solid 2px #f06c64;
+  color: #f06c64;
+}
+@media(min-width: 601px ) and (max-width: 850px){
+  .keyboard__key {
+  font-size: 1.5rem;
+  margin: 2px;
+  padding: 2px;
+}
+}
+@media(max-width: 600px){
+  .keyrow {
+    padding: 2px;
+  }
+  .keyboard__key {
+    height: 25px;
+    font-size: 1.2rem;
+    min-width: 6%;
+    margin: 1px;
+    border: solid 1px #666d89;
+    border-radius: 3px;
+    box-shadow: 0 0 3px #666d89;
+    padding: 2px;
+  }
+  
+}
